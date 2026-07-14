@@ -1,0 +1,4 @@
+__pycache__/
+*.docx
+*.pdf
+!Argentina vs England 2026.pdf
