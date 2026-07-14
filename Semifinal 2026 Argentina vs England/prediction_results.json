@@ -1,0 +1,128 @@
+{
+  "match": "Argentina vs England (FIFA World Cup 2026 Semifinal)",
+  "match_date_local": "2026-07-16 02:00 GMT+7",
+  "venue": {
+    "date": "2026-07-15",
+    "home_team": "England",
+    "away_team": "Argentina",
+    "city": "Atlanta",
+    "country": "United States",
+    "neutral": true,
+    "tournament": "FIFA World Cup"
+  },
+  "data_as_of": "2026-07-11",
+  "generated_at": "2026-07-14T16:03:10.674151+00:00",
+  "predictions": {
+    "team_a": "Argentina",
+    "team_b": "England",
+    "team_a_win": 0.4704,
+    "draw": 0.2829,
+    "team_b_win": 0.2467
+  },
+  "submodels": {
+    "poisson": {
+      "team_a_win": 0.4482,
+      "draw": 0.3096,
+      "team_b_win": 0.2422,
+      "lambda_team_a": 1.1448,
+      "lambda_team_b": 0.7565,
+      "most_likely_score": "1-0",
+      "top_scorelines": [
+        {
+          "score": "1-0",
+          "probability": 0.171
+        },
+        {
+          "score": "0-0",
+          "probability": 0.1494
+        },
+        {
+          "score": "1-1",
+          "probability": 0.1294
+        }
+      ]
+    },
+    "elo_davidson": {
+      "team_a_win": 0.5036,
+      "draw": 0.2429,
+      "team_b_win": 0.2534,
+      "elo_team_a": 2144.4338,
+      "elo_team_b": 2025.1207,
+      "davidson_nu": 0.68
+    }
+  },
+  "team_stats": {
+    "team_a": {
+      "name": "Argentina",
+      "elo": 2144.4,
+      "attack_strength": 1.667,
+      "defense_strength": 0.336,
+      "form": {
+        "n_matches": 10,
+        "ppg": 3.0,
+        "gf_avg": 2.9,
+        "ga_avg": 0.7
+      },
+      "poisson_window": {
+        "n_matches": 68,
+        "window_years": 5,
+        "goals_for_avg": 2.264705882352941,
+        "goals_against_avg": 0.45588235294117646,
+        "league_avg_goals": 1.3582018627637331
+      }
+    },
+    "team_b": {
+      "name": "England",
+      "elo": 2025.1,
+      "attack_strength": 1.659,
+      "defense_strength": 0.505,
+      "form": {
+        "n_matches": 10,
+        "ppg": 2.3,
+        "gf_avg": 1.8,
+        "ga_avg": 0.8
+      },
+      "poisson_window": {
+        "n_matches": 67,
+        "window_years": 5,
+        "goals_for_avg": 2.253731343283582,
+        "goals_against_avg": 0.6865671641791045,
+        "league_avg_goals": 1.3582018627637331
+      }
+    }
+  },
+  "h2h_record": {
+    "argentina_wins": 3,
+    "draws": 6,
+    "england_wins": 6,
+    "total_meetings": 15,
+    "last_match": {
+      "date": "2005-11-12",
+      "home_team": "England",
+      "away_team": "Argentina",
+      "home_score": 3,
+      "away_score": 2,
+      "tournament": "Friendly"
+    }
+  },
+  "methodology": {
+    "blend_weights": {
+      "poisson": 0.6,
+      "elo": 0.4
+    },
+    "poisson_window_years": 5,
+    "elo_k_factor": 32.0,
+    "elo_home_advantage": 65.0,
+    "elo_history_start": "1872-11-30",
+    "elo_n_matches_used": 49505,
+    "davidson_nu": 0.6799999999999997
+  },
+  "caveats": [
+    "This is a statistical projection generated ahead of kickoff, not a report of an actual result.",
+    "Head-to-head record and recent-form figures are shown for context only and do not feed into the blended probability.",
+    "The Poisson attack/defense ratios are not opponent-adjusted, so results against weak group-stage opponents can inflate a team's apparent attacking/defensive strength (strength-of-schedule bias).",
+    "The Poisson submodel treats each team's goals as statistically independent, ignoring the small real-world negative correlation between two teams' low-scoring outcomes.",
+    "The historical dataset has no penalty-shootout field, so any past meeting decided on penalties (e.g. the 1998 World Cup last-16 tie) is recorded as a draw.",
+    "No player-level, injury, suspension, or lineup information is modeled."
+  ]
+}

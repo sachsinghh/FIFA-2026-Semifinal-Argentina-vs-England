@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina vs England — World Cup 2026 Semifinal Prediction</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;
+  --page: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --gridline: #e1e0d9;
+  --border: rgba(11,11,11,0.10);
+  --series-a: #2a78d6;   /* Argentina */
+  --series-draw: #eda100; /* Draw */
+  --series-b: #e34948;   /* England */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface: #1a1a19;
+    --page: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --gridline: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+    --series-a: #3987e5;
+    --series-draw: #c98500;
+    --series-b: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19;
+  --page: #0d0d0d;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --gridline: #2c2c2a;
+  --border: rgba(255,255,255,0.10);
+  --series-a: #3987e5;
+  --series-draw: #c98500;
+  --series-b: #e66767;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  padding: 24px 16px 64px;
+}
+
+.container { max-width: 920px; margin: 0 auto; }
+
+.disclaimer {
+  background-color: var(--surface);
+  border: 1px solid var(--series-draw);
+  border-left: 4px solid var(--series-draw);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.disclaimer strong { color: var(--text-primary); }
+
+header {
+  border-bottom: 2px solid var(--gridline);
+  padding-bottom: 20px;
+  margin-bottom: 32px;
+}
+h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+.match-meta { color: var(--text-secondary); font-size: 14px; }
+.match-meta div { margin-top: 2px; }
+
+.section {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+h3 { font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.03em; margin: 16px 0 8px; }
+
+.prediction-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.card {
+  border: 1px solid var(--gridline);
+  border-radius: 4px;
+  padding: 16px;
+  text-align: center;
+}
+.card-outcome { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
+.card-value { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card.team-a .card-value { color: var(--series-a); }
+.card.draw .card-value { color: var(--series-draw); }
+.card.team-b .card-value { color: var(--series-b); }
+.card.highlight { border-color: currentColor; border-width: 2px; }
+
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 13px; }
+.bar-label { width: 130px; flex-shrink: 0; color: var(--text-secondary); }
+.bar-track { flex: 1; background-color: var(--gridline); border-radius: 3px; overflow: hidden; height: 18px; position: relative; }
+.bar-fill { height: 100%; display: flex; align-items: center; }
+.bar-fill.team-a { background-color: var(--series-a); }
+.bar-fill.draw { background-color: var(--series-draw); }
+.bar-fill.team-b { background-color: var(--series-b); }
+.bar-value { width: 52px; flex-shrink: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--gridline); }
+th { color: var(--text-secondary); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.team-stats dt { color: var(--text-secondary); font-size: 12px; margin-top: 10px; }
+.team-stats dd { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.scoreline-callout {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;
+}
+.scoreline-callout .score { font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.scoreline-callout .prob { color: var(--text-secondary); font-size: 14px; }
+
+ul.caveats { padding-left: 20px; font-size: 13px; color: var(--text-secondary); }
+ul.caveats li { margin-bottom: 6px; }
+
+footer { color: var(--text-muted); font-size: 12px; text-align: center; margin-top: 32px; }
+footer a { color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="disclaimer">
+    <strong>Statistical projection, not a result.</strong> This report was generated ahead of kickoff
+    (2026-07-16 02:00 GMT+7) using a hybrid Poisson + Elo model built on real historical match
+    data (as of 2026-07-11). It is a probabilistic forecast, not a report of what actually happened.
+  </div>
+
+  <header>
+    <h1>Argentina vs England (FIFA World Cup 2026 Semifinal)</h1>
+    <div class="match-meta">
+      <div>Kickoff: 2026-07-16 02:00 GMT+7</div>
+      <div>Venue: Atlanta, United States (neutral)</div>
+      <div>Data as of: 2026-07-11</div>
+    </div>
+  </header>
+
+  <div class="section">
+    <h2>Blended Prediction</h2>
+    
+    <div class="prediction-cards">
+      <div class="card team-a highlight" style="color:var(--series-a)">
+        <div class="card-outcome">Argentina Win</div>
+        <div class="card-value">47.0%</div>
+      </div>
+      <div class="card draw " style="color:var(--series-draw)">
+        <div class="card-outcome">Draw</div>
+        <div class="card-value">28.3%</div>
+      </div>
+      <div class="card team-b " style="color:var(--series-b)">
+        <div class="card-outcome">England Win</div>
+        <div class="card-value">24.7%</div>
+      </div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-label">Argentina win</div>
+      <div class="bar-track">
+        <div class="bar-fill team-a" style="width:47.0%;"></div>
+      </div>
+      <div class="bar-value">47.0%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Draw</div>
+      <div class="bar-track">
+        <div class="bar-fill draw" style="width:28.3%;"></div>
+      </div>
+      <div class="bar-value">28.3%</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">England win</div>
+      <div class="bar-track">
+        <div class="bar-fill team-b" style="width:24.7%;"></div>
+      </div>
+      <div class="bar-value">24.7%</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Submodel Breakdown</h2>
+    
+    <table>
+      <thead><tr><th>Model</th><th class="num">Argentina Win</th><th class="num">Draw</th><th class="num">England Win</th></tr></thead>
+      <tbody>
+        <tr><td>Poisson (expected goals)</td><td class="num">44.8%</td><td class="num">31.0%</td><td class="num">24.2%</td></tr>
+        <tr><td>Elo (Davidson tie-adjusted)</td><td class="num">50.4%</td><td class="num">24.3%</td><td class="num">25.3%</td></tr>
+        <tr><td><strong>Blended (60% Poisson / 40% Elo)</strong></td>
+            <td class="num"><strong>47.0%</strong></td>
+            <td class="num"><strong>28.3%</strong></td>
+            <td class="num"><strong>24.7%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Team Comparison</h2>
+    
+    <div class="comparison">
+      <dl class="team-stats">
+        <h3>Argentina</h3>
+        <dt>Elo rating</dt><dd>2144.4</dd>
+        <dt>Expected goals (&lambda;)</dt><dd>1.14</dd>
+        <dt>Attack / Defense index</dt><dd>1.67 / 0.34</dd>
+        <dt>Last 10 matches: PPG / GF / GA</dt><dd>3.00 / 2.90 / 0.70</dd>
+      </dl>
+      <dl class="team-stats">
+        <h3>England</h3>
+        <dt>Elo rating</dt><dd>2025.1</dd>
+        <dt>Expected goals (&lambda;)</dt><dd>0.76</dd>
+        <dt>Attack / Defense index</dt><dd>1.66 / 0.51</dd>
+        <dt>Last 10 matches: PPG / GF / GA</dt><dd>2.30 / 1.80 / 0.80</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Most Likely Scoreline (Poisson grid)</h2>
+    
+    <div class="scoreline-callout">
+      <div class="score">1-0</div>
+      <div class="prob">most likely scoreline (17.1% of simulated outcomes)</div>
+    </div>
+    <table>
+      <thead><tr><th>Scoreline</th><th class="num">Probability</th></tr></thead>
+      <tbody><tr><td>1-0</td><td class='num'>17.1%</td></tr><tr><td>0-0</td><td class='num'>14.9%</td></tr><tr><td>1-1</td><td class='num'>12.9%</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Head-to-Head</h2>
+    
+    <p style="margin-bottom:12px; font-size:14px; color:var(--text-secondary);">
+      15 all-time meetings: 3 Argentina wins, 6 draws, 6 England wins.
+    </p>
+    
+    <div class="bar-row">
+      <div class="bar-label">Argentina wins</div>
+      <div class="bar-track">
+        <div class="bar-fill team-a" style="width:20.0%;"></div>
+      </div>
+      <div class="bar-value">20.0%</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-label">Draws</div>
+      <div class="bar-track">
+        <div class="bar-fill draw" style="width:40.0%;"></div>
+      </div>
+      <div class="bar-value">40.0%</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-label">England wins</div>
+      <div class="bar-track">
+        <div class="bar-fill team-b" style="width:40.0%;"></div>
+      </div>
+      <div class="bar-value">40.0%</div>
+    </div>
+    <div>Last meeting: 2005-11-12 &mdash; England 3-2 Argentina (Friendly)</div>
+    <p style="margin-top:10px; font-size:12px; color:var(--text-muted);">
+      Note: the underlying dataset has no penalty-shootout field, so any past meeting decided on penalties is recorded as a draw.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Methodology</h2>
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">
+      <strong>Poisson submodel:</strong> each team's expected goals (&lambda;) are derived from attack strength
+      (goals scored vs. league average) and defense strength (goals conceded vs. league average) over a
+      rolling 5-year window, with no home-advantage adjustment since this is a neutral venue.
+      Win/draw/loss probabilities and the most likely scoreline come from summing the Poisson probability mass
+      over a 0&ndash;10 &times; 0&ndash;10 scoreline grid.
+    </p>
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:10px;">
+      <strong>Elo submodel:</strong> ratings are built chronologically from 49,505 historical matches
+      since 1872-11-30 (K-factor 32, goal-difference multiplier capped at 1.75,
+      +65 home-advantage adjustment on non-neutral historical matches only). The two-team Elo gap is
+      converted into a 3-outcome win/draw/loss split using a Davidson tie-adjusted Bradley-Terry model, whose draw
+      parameter (&nu; = 0.68) was calibrated by maximum likelihood against the full historical
+      match log rather than hand-tuned.
+    </p>
+    <p style="font-size:14px; color:var(--text-secondary);">
+      <strong>Blend:</strong> final probabilities = 60% &times; Poisson +
+      40% &times; Elo, renormalized to sum to 100%.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Caveats</h2>
+    <ul class="caveats"><li>This is a statistical projection generated ahead of kickoff, not a report of an actual result.</li><li>Head-to-head record and recent-form figures are shown for context only and do not feed into the blended probability.</li><li>The Poisson attack/defense ratios are not opponent-adjusted, so results against weak group-stage opponents can inflate a team's apparent attacking/defensive strength (strength-of-schedule bias).</li><li>The Poisson submodel treats each team's goals as statistically independent, ignoring the small real-world negative correlation between two teams' low-scoring outcomes.</li><li>The historical dataset has no penalty-shootout field, so any past meeting decided on penalties (e.g. the 1998 World Cup last-16 tie) is recorded as a draw.</li><li>No player-level, injury, suspension, or lineup information is modeled.</li></ul>
+  </div>
+
+  <footer>
+    Data source: martj42/international_results (GitHub) &middot; Generated 2026-07-14T16:03:10.674151+00:00
+  </footer>
+
+</div>
+</body>
+</html>
